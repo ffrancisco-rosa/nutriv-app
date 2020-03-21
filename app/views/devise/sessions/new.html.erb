@@ -1,7 +1,11 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="mt-4">
+    <h2 align="center">Log in</h2>
+  </div>
+  <div class="row justify-content-center m3 p-4">
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
+  <div class="form-inputs form-box">
     <%= f.input :email,
                 required: false,
                 autofocus: true,
@@ -13,8 +17,12 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Log in", class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
+</div>
+<div align="center">
 <%= render "devise/shared/links" %>
+</div>
+</div>

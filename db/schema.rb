@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_102905) do
+ActiveRecord::Schema.define(version: 2020_03_21_153150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calendars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "nutritionist_id"
+    t.bigint "guest_id"
+    t.index ["guest_id"], name: "index_calendars_on_guest_id"
+    t.index ["nutritionist_id"], name: "index_calendars_on_nutritionist_id"
+  end
+
+  create_table "consultation_spots", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "consultations", force: :cascade do |t|
+    t.date "date"
+    t.boolean "status"
+    t.bigint "nutritionist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "guest_id"
+    t.index ["guest_id"], name: "index_consultations_on_guest_id"
+    t.index ["nutritionist_id"], name: "index_consultations_on_nutritionist_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +50,11 @@ ActiveRecord::Schema.define(version: 2020_03_21_102905) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "gender", null: false
+    t.integer "age"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,2 @@
+class ConsultationSpot < ApplicationRecord
+end
