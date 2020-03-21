@@ -18,6 +18,11 @@ gem 'webpacker'
 gem 'cloudinary', '~> 1.12.0'
 gem 'pundit'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+gem 'google-api-client', require: 'google/apis/calendar_v3'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
