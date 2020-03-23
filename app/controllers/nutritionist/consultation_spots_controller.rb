@@ -1,4 +1,4 @@
-module Nutrionist
+module Nutritionist
   class ConsultationSpotsController < ApplicationController
     before_action :find, only: [:show]
     def index

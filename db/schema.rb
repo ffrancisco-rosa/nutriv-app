@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_211809) do
+ActiveRecord::Schema.define(version: 2020_03_23_154042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,15 +29,19 @@ ActiveRecord::Schema.define(version: 2020_03_21_211809) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
   end
 
   create_table "consultations", force: :cascade do |t|
-    t.date "date"
     t.boolean "status"
     t.bigint "nutritionist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "guest_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "consultation_spot_id"
+    t.index ["consultation_spot_id"], name: "index_consultations_on_consultation_spot_id"
     t.index ["guest_id"], name: "index_consultations_on_guest_id"
     t.index ["nutritionist_id"], name: "index_consultations_on_nutritionist_id"
   end
@@ -62,4 +66,5 @@ ActiveRecord::Schema.define(version: 2020_03_21_211809) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "consultations", "consultation_spots"
 end

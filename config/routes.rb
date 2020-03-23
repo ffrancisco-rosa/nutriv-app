@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :nutritionist do
     resources :consultation_spots, only: [:index]
-    resources :consultation, only: [:index]
+    resources :consultations, only: [:index, :show, :new, :create]
     resources :calendars, only: [:index]
   end
 

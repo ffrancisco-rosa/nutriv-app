@@ -2,7 +2,7 @@ class Nutritionist::ConsultationPolicy < ApplicationPolicy
   # [...]
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(nutritionist: user)
     end
   end
   def new?
