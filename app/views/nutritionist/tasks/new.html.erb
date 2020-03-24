@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :location %>
+    <%= form.collection_select :consultation_spot_id, @consultation_spots, :id, :name %>
+  </div>
+
+  <div class="field">
     <%= form.label :members %>
     <%= form.text_field :members %>
   </div>

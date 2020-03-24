@@ -11,10 +11,12 @@ module Nutritionist
 
     def new
       @task = Task.new
+      @consultation_spots = ConsultationSpot.where(nutritionist_id: current_user)
       authorize [:nutritionist, @task]
     end
 
     def create
+
       @task = Task.new(task_params)
       @task.nutritionist_id = current_user.id
 
@@ -72,7 +74,8 @@ module Nutritionist
         ],
         reminders: {
           use_default: true
-        }
+        },
+        color_id: ConsultationSpot.find(task.consultation_spot_id).color.to_s
       }
 
        # event[:id] = task.event if task.event
@@ -111,7 +114,7 @@ module Nutritionist
     end
 
     def task_params
-      params.require(:task).permit(:title, :description, :start_date, :end_date, :event, :members, :nutritionist_id)
+      params.require(:task).permit(:title, :description, :start_date, :end_date, :event, :members, :nutritionist_id, :consultation_spot_id)
     end
   end
 end

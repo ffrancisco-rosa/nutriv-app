@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_153454) do
+ActiveRecord::Schema.define(version: 2020_03_24_194630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,9 @@ ActiveRecord::Schema.define(version: 2020_03_24_153454) do
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "color"
+    t.integer "color"
+    t.bigint "nutritionist_id"
+    t.index ["nutritionist_id"], name: "index_consultation_spots_on_nutritionist_id"
   end
 
   create_table "consultations", force: :cascade do |t|
@@ -56,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_153454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "nutritionist_id"
+    t.bigint "consultation_spot_id"
+    t.index ["consultation_spot_id"], name: "index_tasks_on_consultation_spot_id"
     t.index ["nutritionist_id"], name: "index_tasks_on_nutritionist_id"
   end
 
@@ -80,4 +84,5 @@ ActiveRecord::Schema.define(version: 2020_03_24_153454) do
   end
 
   add_foreign_key "consultations", "consultation_spots"
+  add_foreign_key "tasks", "consultation_spots"
 end
