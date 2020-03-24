@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :consultation_spots, only: [:index]
     resources :consultations, only: [:index, :show, :new, :create]
     resources :calendars, only: [:index]
+    resources :tasks, only: [:index, :new, :create, :edit]
   end
 
   namespace :guest do

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :nutritionist_consultations, class_name: 'consultations', foreign_key: 'nutritionist_id'
   has_many :guest_consultations, class_name: 'consultations', foreign_key: 'guest_id'
 
+  has_many :nutritionist_tasks, class_name: 'tasks', foreign_key: 'nutritionist_id'
+
   # has_many :nutritionist_consultations_spots, class_name: 'consultations_spots', foreign_key: 'nutritionist_id'
   # has_many :guest_consultations_spots, class_name: 'consultations_spots', foreign_key: 'guest_id'
 
@@ -31,5 +33,13 @@ class User < ApplicationRecord
       )
     end
     user
+  end
+
+  def expired?
+    if expires_at == nil
+      return true
+    else
+      expires_at < Time.current.to_i
+    end
   end
 end

@@ -1,0 +1,39 @@
+<h1>Hi</h1>
+
+<%= form_with model: [:nutritionist, @task] do |form| %>
+ <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event %>
+    <%= form.text_field :event %>
+  </div>
+
+  <div class="field">
+    <%= form.label :members %>
+    <%= form.text_field :members %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
