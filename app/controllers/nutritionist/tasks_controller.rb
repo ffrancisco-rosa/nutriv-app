@@ -28,7 +28,7 @@ module Nutritionist
       event = Google::Apis::CalendarV3::Event.new(event)
 
       if client.insert_event(CALENDAR_ID, event)
-        redirect_to nutritionist_tasks_path notice: "Task created"
+        redirect_to nutritionist_tasks_path, notice: "Task created"
       else
         redirect_to new_nutritionist_task_path, notice: "not created"
       end
