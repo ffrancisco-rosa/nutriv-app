@@ -23,12 +23,6 @@ gem 'omniauth-google-oauth2'
 
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 
-
-# Calendar gems
-gem 'fullcalendar-rails'
-gem 'momentjs-rails'
-gem 'jquery-rails'
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
