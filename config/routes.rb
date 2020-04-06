@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :new, :create, :edit]
   end
 
-  namespace :guest do
-    resources :consultation_spots, only: [:index]
-    resources :consultation, only: [:index]
-    resources :calendars, only: [:index]
-  end
+  # namespace :guest do
+  #   resources :consultation_spots, only: [:index]
+  #   resources :consultation, only: [:index]
+  #   resources :calendars, only: [:index]
+  # end
 end
